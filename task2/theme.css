@@ -1,0 +1,159 @@
+/* theme.css */
+:root {
+    /* Light Theme - More Vibrant */
+    --bg: #f8fafc;
+    --text: #334155;
+    --heading: #1e293b;
+    --primary: #4f46e5;  /* More vibrant purple */
+    --secondary: #10b981; /* Emerald green */
+    --accent: #f59e0b;   /* Amber */
+    --header-bg: #ffffff;
+    --header-text: #1e293b;
+    --link: #4f46e5;
+    --skill-bg: #e0e7ff;
+    --skill-text: #3730a3;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --footer-bg: #f1f5f9;
+    --footer-text: #64748b;
+    --timeline-dot: #4f46e5;
+  }
+  
+  [data-theme="dark"] {
+    /* Dark Theme - More Contrast */
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --heading: #f8fafc;
+    --primary: #818cf8;  /* Lighter purple */
+    --secondary: #34d399; /* Bright teal */
+    --accent: #fbbf24;   /* Light amber */
+    --header-bg: #1e293b;
+    --header-text: #f8fafc;
+    --link: #818cf8;
+    --skill-bg: #312e81;
+    --skill-text: #c7d2fe;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --footer-bg: #0f172a;
+    --footer-text: #94a3b8;
+    --timeline-dot: #818cf8;
+  }
+  
+  /* Add these to your existing style.css */
+  /* Animation Classes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+  
+  /* Header Animation */
+  header {
+    background: linear-gradient(135deg, var(--header-bg), var(--bg));
+    animation: gradientBG 15s ease infinite;
+    background-size: 200% 200%;
+  }
+  
+  /* Project Card Enhancements */
+  .project-card {
+    border: 2px solid var(--card-border);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+  }
+  
+  /* Skill Bubbles */
+  .skill {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      transparent,
+      rgba(255,255,255,0.3),
+      transparent
+    );
+    transform: rotate(30deg);
+    transition: all 0.5s ease;
+  }
+  
+  .skill:hover::after {
+    left: 100%;
+  }
+  
+  /* Timeline Animation */
+  .timeline li {
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--timeline-dot);
+    border: 3px solid var(--secondary);
+    animation: pulse 2s infinite;
+  }
+  
+  /* Theme Toggle Button */
+  #themeBtn {
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+  }
+  
+  #themeBtn:hover {
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 0 15px var(--accent);
+  }
+  
+  /* Scroll Top Button */
+  #scrollTopBtn {
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+  }
+  
+  #scrollTopBtn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px var(--accent);
+  }
+  
+  /* Form Input Focus Effects */
+  form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+  }
